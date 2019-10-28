@@ -42,7 +42,7 @@ class Buttons extends Component {
             </div>
 
             <div className='NumBtnInColumn' >
-              <button onClick={this.props.handleDelete} style={{ backgroundColor: 'rgb(52, 56, 106)', borderRadius: '5rem', border: 'none', width: '95%' }} >←</button>
+              <button onClick={this.props.handleDelete} className='Btn' style={{ backgroundColor: 'rgb(52, 56, 106)' ,borderRadius:'5rem'}} >←</button>
               <button onClick={this.props.handleNumClick} className='Btn' value='0'>0</button>
               <button onClick={this.props.handleNumClick} className='Btn' value='.'>．</button>
             </div>

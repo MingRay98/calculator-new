@@ -6,7 +6,7 @@
   align-items: stretch; /*內容物子動延伸到滿*/
   width: 30rem; 
   height: 45rem;
-  margin: 1rem auto; /*邊界 自動致中*/
+  margin: 2rem auto; /*邊界 自動致中*/
   border-radius: 1rem; /*圓角*/
   font-size: 4rem;
   background: linear-gradient(222deg, rgb(66, 73, 124) 35%, rgb(26, 30, 90) 84%);
@@ -16,10 +16,12 @@
   position: relative; 
   display: flex; /*flexBox 呈現方式*/
   flex-direction: row; /*用行*/
-  justify-content: center; /*內容物誌中*/
+  justify-content: space-between; /*內容分散對齊*/
   align-items: stretch; /*內容物子動延伸到滿*/
   width: 100%; 
   height: 80%;
+  margin: 0  auto;
+  padding:1%  0.5% 1% 1% ;
   /* background-color:black;  */
 }
 
@@ -31,7 +33,9 @@
   align-items: stretch;
   width: 100%;
   height: 100%;
+  margin: 0px  auto;
   /* background-color: rgb(0, 255, 42); */
+  
 }
 
 .NumBtnStrecth{
@@ -46,31 +50,31 @@
   display: flex;
   flex-direction: column; /*用行*/
   align-items: stretch; /*內容物子動延伸到滿*/
-  width: 30%;
+  justify-content:  space-between; /*內容物誌中*/
+  margin: 0  auto;
+ 
   height: 100%;
   /* background-color:rgb(0, 255, 42);  */
 }
 
 .OperationRigthBtnPM{
+  margin: 0  auto;
+
   display: flex;
   flex-direction: column; /*用行*/
-  width: 100%;
 
+  height: 52%;
   /* background-color:rgb(255, 123, 0);  */
-  justify-content: center; /*內容物誌中*/
+  justify-content:  space-between; /*內容物誌中*/
 
 }
 
 
 .BigEnter{
-  display: flex;
-  flex-direction: row; /*用行*/
-  align-items: stretch; /*內容物子動延伸到滿*/
-  width: 90%;
+  width: 110px;
   height: 50%;
-  justify-content: center; /*內容物誌中*/
   border: none;
-  margin: 1rem 0rem 0rem 0rem ;
+  margin: 10px  auto;
   border-radius: 5rem;
   background: rgb(255, 0, 98);
   color: white;
@@ -82,8 +86,9 @@
   align-items: stretch; /*內容物子動延伸到滿*/
   width: 100%;
   height: 100%;
-  justify-content: center; /*內容物誌中*/
- 
+  justify-content: space-between; /*內容物誌中*/
+  margin: 0  auto;
+  padding:1%  1% 1% 1% ;
 }
 
 
@@ -91,8 +96,8 @@
   border: none;
   background-color: transparent;
   color: white;
-  width: 100%;
-  height: 100%;
+  width: 110px;
+  height: 110px;
   justify-content: center; /*內容物誌中*/
  
 }
@@ -113,9 +118,12 @@
 .OperationTopBtn{
   position: relative;
   display: flex;
+  align-content: center;
+  justify-content:space-between;
   /* background-color:red;  */
-  width:100%; 
+  margin: 0  auto;
   padding:1%  0.5% 1% 1% ;
+  width:100%; 
   height: 20%;
 }
 
