@@ -36,8 +36,6 @@ class App extends React.Component {
     this.setState({ displaytext: sum + temp })
   }
 
-
-
   multiplyNum = (temp) => {
     const num = this.state.displaytext.split('*');
     const sum = parseFloat(num[0]) * parseFloat(num[1]);
@@ -50,8 +48,6 @@ class App extends React.Component {
     sum = Number(parseFloat(temp).toFixed(10));
     this.setState({ displaytext: sum + temp })
   }
-
-
 
   handleNumClick = (e) => {
 
