@@ -60,7 +60,7 @@ class App extends React.Component {
       return alert("too much")
     }
 
-    if (lastOperation !== '' && lastChar === '0') {
+    if (lastOperation !== '' && lastChar === '0') { //運算元後的0 除錯
       if (lastTwoChar === '.0' || lastTwoChar === '00') {
         console.log('沒事')
       } else if (!isNaN(temp)) {
@@ -70,7 +70,7 @@ class App extends React.Component {
       }
     }
 
-    if (isNaN(temp)) {
+    if (isNaN(temp)) {   //輸入符號檢查
       if (isNaN(lastChar)) //雙重符號
         return alert('double symbol');
       if (temp === '.') {  //雙重小數
@@ -100,7 +100,7 @@ class App extends React.Component {
       if (temp !== ".") this.state.lastOperation = temp;
     }
 
-    if (!isNaN(temp) && this.state.displaytext === '0')
+    if (!isNaN(temp) && this.state.displaytext === '0') //輸入數字的檢查
       this.setState({ displaytext: temp })
     else if (!isNaN(temp))
       this.setState({ displaytext: this.state.displaytext + temp })
