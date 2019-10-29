@@ -50,7 +50,6 @@ class App extends React.Component {
   }
 
   handleNumClick = (e) => {
-
     const lastOperation = this.state.lastOperation;
     const lastChar = this.state.lastChar;
     const displaytext = this.state.displaytext;
