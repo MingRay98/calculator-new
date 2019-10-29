@@ -2,7 +2,7 @@
   "name": "calculate-bootsrap",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://mingray98.github.io/calculate-bootsrap",
+  "homepage": "http://mingray98.github.io/calculator",
   "dependencies": {
     "react": "^16.10.2",
     "react-bootstrap": "^1.0.0-beta.14",
