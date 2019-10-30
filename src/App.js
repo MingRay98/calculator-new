@@ -5,139 +5,141 @@ import Buttons from './component/Buttons'
 import eventemitter from 'wolfy87-eventemitter'
 
 let emitter = new eventemitter();
+let lastOperation = ''
+let lastChar = ''
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      lastOperation: '',
       displaytext: '0',
-      lastChar: ''
     };
   }
 
   componentDidMount() {
-    emitter.addListener('add', this.addNum);
-    emitter.addListener('minus', this.minusNum);
-    emitter.addListener('multiply', this.multiplyNum);
-    emitter.addListener('divisor', this.divisorNum);
+    emitter.addListener('handleNumClick', this.handleNumClick);
+    emitter.addListener('handleCalculate', this.handleCalculate);
+    emitter.addListener('handleClear', this.handleClear);
+    emitter.addListener('handleDelete', this.handleDelete);
   }
 
-  addNum = (temp) => {
+  addNum = (input) => {
     const num = this.state.displaytext.split('+');
     const sum = parseFloat(num[0]) + parseFloat(num[1]);
-    this.setState({ displaytext: sum + temp })
+    this.setState({ displaytext: sum + input })
   }
 
-  minusNum = (temp) => {
-    const num = this.state.displaytext.split('-');
-    const sum = parseFloat(num[0]) - parseFloat(num[1]);
-    this.setState({ displaytext: sum + temp })
-  }
-
-  multiplyNum = (temp) => {
-    const num = this.state.displaytext.split('*');
-    const sum = parseFloat(num[0]) * parseFloat(num[1]);
-    this.setState({ displaytext: sum + temp })
-  }
-
-  divisorNum = (temp) => {
-    const num = this.state.displaytext.split('/');
-    let sum = parseFloat(num[0]) / parseFloat(num[1]);
-    sum = Number(parseFloat(temp).toFixed(10));
-    this.setState({ displaytext: sum + temp })
-  }
-
-  handleNumClick = (e) => {
-    const lastOperation = this.state.lastOperation;
-    const lastChar = this.state.lastChar;
+  minusNum = (input) => {
     const displaytext = this.state.displaytext;
-    const temp = e.target.value;
-    const lastTwoChar = displaytext.slice(displaytext.length - 2);
+    let num = '', sum = '';
+    //handle negative Num
+    if (displaytext.toString().charAt(0) === '-') {
+      num = this.state.displaytext.split('-');
+      sum = -parseFloat(num[1]) - parseFloat(num[2]);
+    }
+    else {
+      num = this.state.displaytext.split('-');
+      sum = parseFloat(num[0]) - parseFloat(num[1]);
+    }
+    this.setState({ displaytext: sum + input })
+  }
 
-    if (displaytext.length > 12) { //輸入過多
+  multiplyNum = (input) => {
+    const num = this.state.displaytext.split('*');
+    let sum = parseFloat(num[0]) * parseFloat(num[1]);
+    sum = Number(parseFloat(sum).toFixed(10));
+    this.setState({ displaytext: sum + input })
+  }
+
+  divisorNum = (input) => {
+    const num = this.state.displaytext.split('/');
+    let sum = (parseFloat(num[0]) / parseFloat(num[1]));
+    sum = Number(parseFloat(sum).toFixed(10));
+    this.setState({ displaytext: sum.toString() + input.toString() })
+  }
+
+  handleNumClick = (input) => {
+    const displaytext = this.state.displaytext;
+    const lastTwoChar = displaytext.toString().slice(displaytext.length - 2, displaytext.length - 1);
+    //input too many input
+    if (displaytext.length > 12)
       return alert("too much")
+    //DeBug for zero after operation 
+    if (isNaN(lastTwoChar) && lastTwoChar !== '.' && lastChar === '0' && !isNaN(input)) {
+      let dt = displaytext.substring(0, displaytext.length - 1) + input
+      this.setState({ displaytext: dt })
+      return lastChar = input
     }
-
-    if (lastOperation !== '' && lastChar === '0') { //運算元後的0 除錯
-      if (lastTwoChar === '.0' || lastTwoChar === '00') {
-        console.log('沒事')
-      } else if (!isNaN(temp)) {
-        let dt = displaytext.substring(0, displaytext.length - 1) + temp
-        this.setState({ displaytext: dt })
-        return this.state.lastChar = temp
-      }
-    }
-
-    if (isNaN(temp)) {   //輸入符號檢查
-      if (isNaN(lastChar)) //雙重符號
+    //If input is symbol 
+    if (isNaN(input)) {
+      if (isNaN(lastChar))
         return alert('double symbol');
-      if (temp === '.') {  //雙重小數
+      if (input === '.') {
         try {
-          isNaN(eval(this.state.displaytext + "."))
+          isNaN(eval(displaytext + "."))
         }
         catch (e) {
           return alert('double dot');
         }
       }
-
-      if (temp === '%') {
-        this.setState({ displaytext: this.state.displaytext / 100 })
-        return
-      } else if (lastOperation === '' || temp === '.')
-        this.setState({ displaytext: this.state.displaytext + temp });
+      if (input === '%') {
+        let sum = eval(displaytext) / 100
+        sum = Number(parseFloat(sum).toFixed(10));
+        return this.setState({ displaytext: sum })
+      }
+      else if (lastOperation === '' || input === '.')
+        this.setState({ displaytext: displaytext + input });
       else {
         if (lastOperation === '+')
-          emitter.emitEvent('add', [temp]);
+          this.addNum(input);
         if (lastOperation === '-')
-          emitter.emitEvent('minus', [temp]);
+          this.minusNum(input);
         if (lastOperation === '*')
-          emitter.emitEvent('multiply', [temp]);
+          this.multiplyNum(input);
         if (lastOperation === '/')
-          emitter.emitEvent('divisor', [temp]);
+          this.divisorNum(input);
       }
-      if (temp !== ".") this.state.lastOperation = temp;
+      if (input !== ".") lastOperation = input;
     }
+    //input Num
+    if (!isNaN(input) && displaytext === '0')
+      this.setState({ displaytext: input })
+    else if (!isNaN(input))
+      this.setState({ displaytext: displaytext + input })
 
-    if (!isNaN(temp) && this.state.displaytext === '0') //輸入數字的檢查
-      this.setState({ displaytext: temp })
-    else if (!isNaN(temp))
-      this.setState({ displaytext: this.state.displaytext + temp })
-
-    this.state.lastChar = temp;
-
+    lastChar = input;
   }
 
   handleDelete = () => {
-    const displaytext = this.state.displaytext;
-    const lastChar = displaytext.charAt(displaytext.length - 2)
+    let displaytext = this.state.displaytext;
     const delteChar = displaytext.charAt(displaytext.length - 1)
+    //if delte operation remove lastOperation
     if (delteChar === '+' || delteChar === '-' || delteChar === '/' || delteChar === '*')
-      this.setState({ lastOperation: "" })
-
-    let temp = this.state.displaytext.toString().slice(0, -1);
-
-    this.state.displaytext.toString().length === 1 ?
+      lastOperation = "";
+    // if display is Null show 0
+    displaytext = displaytext.toString().slice(0, -1);
+    displaytext.toString().length < 1 ?
       this.setState({ displaytext: '0' }) :
-      this.setState({ displaytext: temp })
-    this.state.lastChar = lastChar
+      this.setState({ displaytext: displaytext })
+
+    lastChar = displaytext.charAt(displaytext.length - 1);
   }
 
   handleClear = () => {
-    this.state.lastOperation = '';
-    this.state.lastChar = '';
+    lastOperation = '';
+    lastChar = '';
     this.setState({ displaytext: '0' })
   }
 
   handleCalculate = () => {
-    let temp = eval(this.state.displaytext.toString());
-    if (temp.toString().indexOf('.') == true) {
-      temp = Number(parseFloat(temp).toFixed(10));
-    }
-    this.setState({ displaytext: temp.toString() })
-    this.state.lastOperation = '';
-    this.state.lastChar = '';
+    if (isNaN(lastChar))
+      return alert('Error Input')
+    let sum = eval(this.state.displaytext.toString());
+    sum = Number(parseFloat(sum).toFixed(10));
+    this.setState({ displaytext: sum.toString() })
+    lastOperation = '';
+    lastChar = '';
   }
 
   render() {
@@ -145,7 +147,7 @@ class App extends React.Component {
       <div alignContent="center">
         <div className='FirstContainer' >
           <DisplayBlock Component={this.state.displaytext} />
-          <Buttons handleCalculate={this.handleCalculate} handleClear={this.handleClear} handleDelete={this.handleDelete} handleNumClick={this.handleNumClick} />
+          <Buttons emitter={emitter} />
         </div>
       </div>
     );
