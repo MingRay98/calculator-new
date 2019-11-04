@@ -14,6 +14,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       displaytext: '0',
+      displaytext2: '0',
     };
   }
 
@@ -22,41 +23,6 @@ class App extends React.Component {
     emitter.addListener('handleCalculate', this.handleCalculate);
     emitter.addListener('handleClear', this.handleClear);
     emitter.addListener('handleDelete', this.handleDelete);
-  }
-
-  addNum = (input) => {
-    const num = this.state.displaytext.split('+');
-    const sum = parseFloat(num[0]) + parseFloat(num[1]);
-    this.setState({ displaytext: sum + input })
-  }
-
-  minusNum = (input) => {
-    const displaytext = this.state.displaytext;
-    let num = '', sum = '';
-    //handle negative Num
-    if (displaytext.toString().charAt(0) === '-') {
-      num = this.state.displaytext.split('-');
-      sum = -parseFloat(num[1]) - parseFloat(num[2]);
-    }
-    else {
-      num = this.state.displaytext.split('-');
-      sum = parseFloat(num[0]) - parseFloat(num[1]);
-    }
-    this.setState({ displaytext: sum + input })
-  }
-
-  multiplyNum = (input) => {
-    const num = this.state.displaytext.split('*');
-    let sum = parseFloat(num[0]) * parseFloat(num[1]);
-    sum = Number(parseFloat(sum).toFixed(10));
-    this.setState({ displaytext: sum + input })
-  }
-
-  divisorNum = (input) => {
-    const num = this.state.displaytext.split('/');
-    let sum = (parseFloat(num[0]) / parseFloat(num[1]));
-    sum = Number(parseFloat(sum).toFixed(10));
-    this.setState({ displaytext: sum.toString() + input.toString() })
   }
 
   handleNumClick = (input) => {
@@ -114,16 +80,12 @@ class App extends React.Component {
   handleDelete = () => {
     let displaytext = this.state.displaytext;
     const delteChar = displaytext.charAt(displaytext.length - 1)
-    //if delte operation remove lastOperation
-    if (delteChar === '+' || delteChar === '-' || delteChar === '/' || delteChar === '*')
-      lastOperation = "";
-    // if display is Null show 0
+
     displaytext = displaytext.toString().slice(0, -1);
     displaytext.toString().length < 1 ?
       this.setState({ displaytext: '0' }) :
       this.setState({ displaytext: displaytext })
 
-    lastChar = displaytext.charAt(displaytext.length - 1);
   }
 
   handleClear = () => {
@@ -133,8 +95,6 @@ class App extends React.Component {
   }
 
   handleCalculate = () => {
-    if (isNaN(lastChar))
-      return alert('Error Input')
     let sum = eval(this.state.displaytext.toString());
     sum = Number(parseFloat(sum).toFixed(10));
     this.setState({ displaytext: sum.toString() })
