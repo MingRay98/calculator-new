@@ -48,6 +48,9 @@ div {
     border-radius: 5rem;
     /*內容物誌中*/
 }
+.Btn:hover{
+    box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.9);
+}
 
 .BigEnter {
     height: 12.6rem;
