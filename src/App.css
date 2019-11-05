@@ -62,7 +62,7 @@ body {
     background: -o-linear-gradient(90deg, rgba(250, 51, 137, 0.8)26%, rgba(230, 82, 13, 0.7)87%);
 }
 
-.alert1{
+.alert1 {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -70,17 +70,18 @@ body {
     height: 0rem;
     color: red;
     text-align: center;
-    background: rgba(0,0,0,0.94);
+    background: rgba(0, 0, 0, 0.94);
     overflow: hidden;
     transition: height .2s;
     font-size: 4rem;
 }
-.active{
+
+.active {
     height: 6rem;
     display: 'block';
 }
 
-.hisotry{
+.hisotry {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -88,15 +89,14 @@ body {
     height: 0rem;
     color: white;
     text-align: left;
-    vertical-align:text-top;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     padding: 0px 0px 0px 2rem;
     overflow: hidden;
     transition: width .2s;
     font-size: 2rem;
 }
 
-.active2{
+.active2 {
     height: 100vh;
     display: 'block';
 }

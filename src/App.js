@@ -31,12 +31,7 @@ class App extends React.Component {
     //input too many input
     if (displaytext.length > 12)
       return this.handleAlert('Error:Input too much')
-    //DeBug for zero after operation 
-    if (isNaN(lastTwoChar) && lastTwoChar !== '.' && lastChar === '0' && !isNaN(input)) {
-      let dt = displaytext.substring(0, displaytext.length - 1) + input
-      this.setState({ displaytext: dt })
-      return lastChar = input
-    }
+
     //If input is symbol 
     if (isNaN(input)) {
       if (isNaN(lastChar))
@@ -63,11 +58,17 @@ class App extends React.Component {
         this.setState({ displaytext: input });
       else
         this.setState({ displaytext: displaytext + input });
+      return
     }
     //input Num
     if (displaytext === '0')
       this.setState({ displaytext: input })
-    else
+    //DeBug for zero after operation 
+    else if (isNaN(lastTwoChar) && lastTwoChar !== '.' && lastChar === '0') {
+      let dt = displaytext.substring(0, displaytext.length - 1) + input
+      this.setState({ displaytext: dt })
+      return lastChar = input
+    } else
       this.setState({ displaytext: displaytext + input })
 
     lastChar = input;
