@@ -7,7 +7,8 @@ class Buttons extends Component {
   }
 
   operationColorStyle = {
-    backgroundColor: 'rgb(255, 123, 0)'
+    background: "rgb(255,200,105)",
+    background: "linear-gradient(180deg, rgba(255,143,62,1) 22%, rgba(255,125,33,1) 60%, rgba(255,107,0,1) 100%)"
   }
 
   render() {
@@ -18,13 +19,13 @@ class Buttons extends Component {
     const emDelete = () => em.emitEvent('handleDelete');
 
     return (
-      <div style={{height:'30rem'}}>
+      <div style={{ height: '30rem' }}>
         <div class='BtnColumn'>
-          <button class="Btn" style={{backgroundColor:'white', color:'red'}}>C</button>
+          <button class="Btn" style={{ backgroundColor: 'white', color: 'red' }}>C</button>
           <button class="Btn">1</button>
           <button class="Btn">4</button>
           <button class="Btn">7</button>
-          <button class="Btn" style={{background:'black',opacity:'0.5'}}>←</button>
+          <button class="Btn" style={{ background: 'rgba(150, 117, 117, 0.377)' }}>←</button>
         </div>
         <div class='BtnColumn'>
           <button class="Btn" style={this.operationColorStyle}>%</button>
