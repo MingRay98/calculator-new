@@ -29,7 +29,7 @@ class App extends React.Component {
     const displaytext = this.state.displaytext;
     const lastTwoChar = displaytext.toString().slice(displaytext.length - 2, displaytext.length - 1);
     //input too many input
-    if (displaytext.length > 14)
+    if (displaytext.length > 12)
       return this.handleAlert('Error:Input too much')
     //DeBug for zero after operation 
     if (isNaN(lastTwoChar) && lastTwoChar !== '.' && lastChar === '0' && !isNaN(input)) {
