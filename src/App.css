@@ -3,54 +3,47 @@ div {
     border: none;
     display: flex;
     flex-wrap: wrap;
-    color:white;
+    color: white;
 }
 
 .FirstContainer {
     display: flex;
-    /*flexBox 呈現方式*/
     flex-direction: row;
-    /*用行*/
     flex-wrap: wrap;
     justify-content: center;
-    /*內容物誌中*/
     width: 30rem;
     height: 50rem;
     margin: 2rem auto;
-    /*邊界 自動致中*/
     border-radius: 1rem;
-    /*圓角*/
     font-size: 4rem;
     background: linear-gradient(222deg, rgb(66, 73, 124) 35%, rgb(26, 30, 90) 84%);
-    box-shadow: 0 3rem 3rem 0 rgba(0,0,0,0.5);
+    box-shadow: 0 3rem 10rem 0 rgba(0, 0, 0, 0.8);
 }
 
-.Display{
+.Display {
     display: flex;
-    width: 100%;
-    height: 20rem;
-    align-content: center;
+    margin: 0.0rem 1rem 0rem 1rem;
 }
-.BtnColumn{
+
+.BtnColumn {
     display: flex;
     flex-direction: column;
 }
 
 .Btn {
+    display: flex;
     border: none;
     background-color: transparent;
     color: white;
     width: 6.5rem;
     height: 6.5rem;
-    margin: 0.3rem 0.4rem 0.2rem 0.4rem ;
-    justify-content: center;
-    align-content: center;
-    align-self: center;
+    margin: 0.3rem 0.4rem 0.2rem 0.4rem;
+    justify-content: space-around;
     border-radius: 5rem;
-    /*內容物誌中*/
 }
-.Btn:hover{
-    box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.9);
+
+.Btn:hover {
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, 0.9);
 }
 
 .BigEnter {
@@ -62,78 +55,48 @@ div {
     box-shadow: 0px 0px 50px 4px rgb(255, 0, 98);
 }
 
-.NumBtnInColumn {
-    display: flex;
-    flex-direction: row;
-    /*用行*/
-    align-items: stretch;
-    /*內容物子動延伸到滿*/
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    /*內容物誌中*/
-    margin: 0 auto;
-    padding: 1% 1% 1% 1%;
-}
-
-.DisplayBlock {
-    position: relative;
-    display: block;
-    /*區塊，每個元素會自動換行*/
-    /* background-color: white;  */
-    width: 95%;
-    height: 20%;
-    text-align: right;
-    margin: 4px auto;
-    color: white;
-    padding-top: 2rem;
-}
-
-.OperationTopBtn {
-    position: relative;
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    /* background-color:red;  */
-    margin: 0 auto;
-    padding: 1% 0.5% 1% 1%;
-    width: 100%;
-    height: 20%;
-}
-
-.CB {
-    background: linear-gradient(222deg, rgb(66, 73, 124) 35%, rgb(26, 30, 90) 84%);
-    border-radius: 25px;
-}
-
 body {
-    background: linear-gradient(90deg, rgba(250, 51, 137,0.8)26%, rgba(230, 82, 13,0.7)87%);
-    background: -moz-linear-gradient(90deg, rgba(250, 51, 137,0.8)26%, rgba(230, 82, 13,0.7)87%);
-    background: -webkit-linear-gradient(90deg, rgba(250, 51, 137,0.8)26%, rgba(230, 82, 13,0.7)87%);
-    background: -o-linear-gradient(90deg, rgba(250, 51, 137,0.8)26%, rgba(230, 82, 13,0.7)87%);
+    background: linear-gradient(90deg, rgba(250, 51, 137, 0.8)26%, rgba(230, 82, 13, 0.7)87%);
+    background: -moz-linear-gradient(90deg, rgba(250, 51, 137, 0.8)26%, rgba(230, 82, 13, 0.7)87%);
+    background: -webkit-linear-gradient(90deg, rgba(250, 51, 137, 0.8)26%, rgba(230, 82, 13, 0.7)87%);
+    background: -o-linear-gradient(90deg, rgba(250, 51, 137, 0.8)26%, rgba(230, 82, 13, 0.7)87%);
 }
 
-.css-183sxea {
-    font-family: Nunito;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    align-content: center;
-    font-size: 40px;
-    width: 90px;
-    height: 90px;
-    margin-bottom: 10px;
-    margin-right: 6px;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    background-image: none;
-    opacity: 1;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    border-radius: 0px;
-    padding: 0px;
+.alert1{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0rem;
+    color: red;
+    text-align: center;
+    background: rgba(0,0,0,0.94);
+    overflow: hidden;
+    transition: height .2s;
+    font-size: 4rem;
+}
+.active{
+    height: 6rem;
+    display: 'block';
+}
+
+.hisotry{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30vw;
+    height: 0rem;
+    color: white;
+    text-align: left;
+    vertical-align:text-top;
+    background: rgba(0,0,0,0.8);
+    padding: 0px 0px 0px 2rem;
+    overflow: hidden;
+    transition: width .2s;
+    font-size: 2rem;
+}
+
+.active2{
+    height: 100vh;
+    display: 'block';
 }
