@@ -117,25 +117,35 @@ class App extends React.Component {
   handleHistroy = () => {
     let limit = 0;
     if (this.history.length - 1 >= 0) {
-      let arrayHistory = document.getElementById('hisotry');
+      let arrayHistory = document.getElementById('history');
+      let historyBtn = document.getElementById('historyBtn');
+
+      arrayHistory.className = arrayHistory.className + ' active';
+      historyBtn.className = historyBtn.className + ' active';
+
       arrayHistory.innerHTML = "";
-      arrayHistory.className = arrayHistory.className + ' active2';
-      if (this.history.length > 10)
-        limit = this.history.length - 10;
+
+      if (this.history.length > 12)
+        limit = this.history.length - 12;
       this.history.forEach((item, key) => {
         if (key >= limit)
           arrayHistory.innerHTML += key + 1 + ". " + item + "<br>";
       })
-      setTimeout(() => {
-        arrayHistory.className = 'hisotry';
-      }, 5000)
     }
+  }
+
+  handleCloseHistory = () => {
+    let arrayHistory = document.getElementById('history');
+    let historyBtn = document.getElementById('historyBtn');
+    arrayHistory.className = 'history';
+    historyBtn.className = 'Btn hisotryBtn';
   }
 
   render() {
     return (
       <div alignContent="center">
-        <span id='hisotry' className='hisotry' />
+        <span id='history' className='history' />
+        <button id='historyBtn' className='Btn hisotryBtn' onClick={this.handleCloseHistory}>X</button>
         <span id='alert1' className='alert1' />
         <div className='FirstContainer' >
           <DisplayBlock displaytext={this.state.displaytext} displaytext2={this.state.displaytext2} handleHistroy={this.handleHistroy} />

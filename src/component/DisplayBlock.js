@@ -9,13 +9,13 @@ class DisplayBlock extends Component {
   render() {
     return (
       <div className="Display" >
-        <div style={{ height: "2.5rem", width: "30rem", margin: '0px 0px 0px 2rem' }}>
-          <button style={{ border: 'none', background: 'transparent', color: 'white', fontSize: "2.5rem" }} onClick={this.props.handleHistroy}>☰</button>
+        <div className='Display1'>
+          <button style={{ fontSize: "2rem" , width:'3rem' , height:'3rem'  }} className='Btn' onClick={this.props.handleHistroy}>☰</button>
         </div>
-        <div style={{ height: "2.5rem", width: "29rem", fontSize: "2.5rem", justifyContent: 'flex-end'}}>
+        <div style={{ fontSize: "2.5rem", justifyContent: 'flex-end'}} className='Display1' >
           {this.props.displaytext}
         </div>
-        <div style={{ height: "4.7rem", width: "29rem", justifyContent: 'flex-end', fontSize: "4rem" ,overflow: 'hidden' , verticalAlign:'text-top'}}>
+        <div style={{ justifyContent: 'flex-end' ,overflow: 'hidden'}} className='Display2'>
           {this.props.displaytext2}
         </div>
       </div>

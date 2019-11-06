@@ -25,6 +25,16 @@ div {
     margin: 0.0rem 1rem 0rem 1rem;
 }
 
+.Display1 {
+    height: 2.5rem;
+    width: 28rem;
+}
+
+.Display2 {
+    height: 5rem;
+    width: 28rem;
+}
+
 .BtnColumn {
     display: flex;
     flex-direction: column;
@@ -67,36 +77,63 @@ body {
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 0rem;
+    height: 6rem;
     color: red;
     text-align: center;
     background: rgba(0, 0, 0, 0.94);
     overflow: hidden;
-    transition: height .2s;
-    font-size: 4rem;
+    font-size: 2.8rem;
+    display: none;
 }
 
-.active {
-    height: 6rem;
-    display: 'block';
-}
-
-.hisotry {
+.history {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 30rem;
-    height: 0rem;
+    height: 100%;
     color: white;
     text-align: left;
     background: rgba(0, 0, 0, 0.8);
     padding: 0px 0px 0px 2rem;
     overflow: hidden;
     transition: width .2s;
-    font-size: 3.8rem;
+    font-size: 3rem;
+    display: none;
 }
 
-.active2 {
-    height: 100%;
-    display: 'block';
+.hisotryBtn {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 6rem;
+    height: 6rem;
+    font-size: 4rem;
+    display: none;
+    background-color: rgb(255, 0, 98);
+    box-shadow: 0px 0px 50px 4px rgb(255, 0, 98);
+}
+
+.active {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 500px) {
+    .FirstContainer {
+        width: 25rem;
+        height: 40rem;
+    }
+    .Btn {
+        width: 5rem;
+        height: 5rem;
+    }
+    .BigEnter {
+        height: 10rem;
+    }
+    .Display1 {
+        width: 23rem;
+    }
+    .Display2 {
+        width: 23rem;
+    }
 }

@@ -39,6 +39,8 @@ class Buttons extends Component {
         break;
       case '☰':
         break;
+      case 'X':
+        break;
       default:
         this.emClick(input);
         break;
