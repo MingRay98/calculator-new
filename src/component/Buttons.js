@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 class Buttons extends Component {
   constructor(props) {
@@ -47,32 +48,32 @@ class Buttons extends Component {
   render() {
     return (
       <div style={{ height: '30rem' }}>
-        <div class='BtnColumn'>
-          <button class="Btn" style={{ backgroundColor: 'white', color: 'red' }}>C</button>
-          <button class="Btn">1</button>
-          <button class="Btn">4</button>
-          <button class="Btn">7</button>
-          <button class="Btn" style={{ background: 'rgba(150, 117, 117, 0.377)' }}>←</button>
+        <div className='BtnColumn'>
+          <button className="Btn" style={{ backgroundColor: 'white', color: 'red' }}>C</button>
+          <button className="Btn">1</button>
+          <button className="Btn">4</button>
+          <button className="Btn">7</button>
+          <button className="Btn" style={{ background: 'rgba(150, 117, 117, 0.377)' }}>←</button>
         </div>
-        <div class='BtnColumn'>
-          <button class="Btn" style={this.operationColorStyle}>%</button>
-          <button class="Btn">2</button>
-          <button class="Btn">5</button>
-          <button class="Btn">8</button>
-          <button class="Btn">0</button>
+        <div className='BtnColumn'>
+          <button className="Btn" style={this.operationColorStyle}>%</button>
+          <button className="Btn">2</button>
+          <button className="Btn">5</button>
+          <button className="Btn">8</button>
+          <button className="Btn">0</button>
         </div>
-        <div class='BtnColumn'>
-          <button class="Btn" style={this.operationColorStyle}>/</button>
-          <button class="Btn">3</button>
-          <button class="Btn">6</button>
-          <button class="Btn">9</button>
-          <button class="Btn">.</button>
+        <div className='BtnColumn'>
+          <button className="Btn" style={this.operationColorStyle}>/</button>
+          <button className="Btn">3</button>
+          <button className="Btn">6</button>
+          <button className="Btn">9</button>
+          <button className="Btn">.</button>
         </div>
-        <div class='BtnColumn'>
-          <button class="Btn" style={this.operationColorStyle}>*</button>
-          <button class="Btn" style={this.operationColorStyle}>+</button>
-          <button class="Btn" style={this.operationColorStyle}>-</button>
-          <button class="Btn BigEnter">=</button>
+        <div className='BtnColumn'>
+          <button className="Btn" style={this.operationColorStyle}>*</button>
+          <button className="Btn" style={this.operationColorStyle}>+</button>
+          <button className="Btn" style={this.operationColorStyle}>-</button>
+          <button className="Btn BigEnter">=</button>
         </div>
       </div>
 

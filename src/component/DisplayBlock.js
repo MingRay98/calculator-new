@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../App.css';
 
 class DisplayBlock extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class DisplayBlock extends Component {
   }
   render() {
     return (
-      <div class="Display" >
+      <div className="Display" >
         <div style={{ height: "2.5rem", width: "30rem", margin: '0px 0px 0px 2rem' }}>
           <button style={{ border: 'none', background: 'transparent', color: 'white', fontSize: "2.5rem" }} onClick={this.props.handleHistroy}>☰</button>
         </div>

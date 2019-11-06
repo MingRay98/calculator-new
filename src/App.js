@@ -58,6 +58,7 @@ class App extends React.Component {
         this.setState({ displaytext: input });
       else
         this.setState({ displaytext: displaytext + input });
+      lastChar = input;
       return
     }
     //input Num
@@ -70,7 +71,6 @@ class App extends React.Component {
       return lastChar = input
     } else
       this.setState({ displaytext: displaytext + input })
-
     lastChar = input;
   }
 
@@ -120,8 +120,8 @@ class App extends React.Component {
       let arrayHistory = document.getElementById('hisotry');
       arrayHistory.innerHTML = "";
       arrayHistory.className = arrayHistory.className + ' active2';
-      if (this.history.length > 20)
-        limit = this.history.length - 20;
+      if (this.history.length > 10)
+        limit = this.history.length - 10;
       this.history.forEach((item, key) => {
         if (key >= limit)
           arrayHistory.innerHTML += key + 1 + ". " + item + "<br>";
@@ -135,8 +135,8 @@ class App extends React.Component {
   render() {
     return (
       <div alignContent="center">
-        <span id='hisotry' class='hisotry' />
-        <span id='alert1' class='alert1' />
+        <span id='hisotry' className='hisotry' />
+        <span id='alert1' className='alert1' />
         <div className='FirstContainer' >
           <DisplayBlock displaytext={this.state.displaytext} displaytext2={this.state.displaytext2} handleHistroy={this.handleHistroy} />
           <Buttons emitter={emitter} />
