@@ -115,7 +115,7 @@ body {
 }
 
 .active {
-    display: inline-block;
+    display: block;
 }
 
 @media only screen and (max-width: 500px) {

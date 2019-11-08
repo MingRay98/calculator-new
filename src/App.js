@@ -30,19 +30,22 @@ class App extends React.Component {
     const lastTwoChar = displaytext.toString().slice(displaytext.length - 2, displaytext.length - 1);
     //input too many input
     if (displaytext.length > 12)
-      return this.handleAlert('Error:Input too much')
+      // this.handleAlert('Error:Input too much')
+      return
 
     //If input is symbol 
     if (isNaN(input)) {
       if (isNaN(lastChar))
-        return this.handleAlert('Error:Double symbol');
+      // this.handleAlert('Error:Double symbol');
+        return 
       if (input === '.') {
         try {
           isNaN(eval(displaytext + "."))
           this.setState({ displaytext: displaytext + '.' });
         }
         catch (e) {
-          return this.handleAlert('Error:Double dot');
+          // this.handleAlert('Error:Double dot');
+          return 
         }
       }
       if (input === '%') {
@@ -95,11 +98,13 @@ class App extends React.Component {
   handleCalculate = () => {
     //handle lastChar is a symbol
     if (isNaN(lastChar))
-      return this.handleAlert('Error:Input error')
+    // this.handleAlert('Error:Input error')
+      return 
     let sum = eval(this.state.displaytext.toString());
     //handle 0/0
     if (isNaN(sum))
-      return this.handleAlert('Error:Input error')
+    // this.handleAlert('Error:Input error')
+      return 
     sum = Number(parseFloat(sum).toFixed(10));
     this.setState({ displaytext2: sum.toString() })
     this.history.push(this.state.displaytext + " = " + sum)
